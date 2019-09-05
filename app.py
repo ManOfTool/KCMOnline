@@ -11,8 +11,8 @@ def index():
     return render_template('upload.html')
 
 @app.route('/upload')
-def upload_file(msg):
-    return render_template('upload.html', msg=msg)
+def upload_file():
+    return render_template('upload.html')
 
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_files():
@@ -23,14 +23,14 @@ def upload_files():
         fs_n = []
         for f in file_list:
             if f.filename.split('.')[-1].lower() not in ['jpg', 'png', 'jpeg']:
-                return redirect(url_for('upload_file', msg='!!!!! jpg, png, jpeg only !!!!!'))
+                return redirect(url_for('upload_file'))
 
             f.save(SAVE_PATH + secure_filename(f.filename))
             fs_n.append(SAVE_PATH + secure_filename(f.filename))
 
         X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst)
         if X != 'Success':
-            return redirect(url_for('upload_file', msg=X))
+            return redirect(url_for('upload_file'))
 
         return render_template('result.html', img=dst)
 
