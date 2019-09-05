@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload</title>
+</head>
+<body>
+    <h1>選擇你的圖片和排列方式</h1>
+    <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+        <p><label><input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required />
+        <br>
+        <p>排列方式：<br>
+        <p><label><input type="radio" name="mode" value="hw" checked="checked" required>水平二排</label></p>
+        <p><label><input type="radio" name="mode" value="vw" required>垂直二排</label></p>
+        <p><label><input type="radio" name="mode" value="hl" required>水平一排</label></p>
+        <p><label><input type="radio" name="mode" value="lv" required>垂直一排</label></p>
+        <p><label><input type="submit" />
+    </form>
+    <br>
+    {% if msg %}
+    <p>{{ msg }}</p>
+    {% endif %}
+</body>
+</html>
