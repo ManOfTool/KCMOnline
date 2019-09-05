@@ -4,13 +4,14 @@
     <title>Upload</title>
 </head>
 <body>
-    <h1>選擇你的圖片和排列方式</h1>
+    <h1>KC Merge Online</h1>
+    之前為了寫艦娘攻略寫了一個組合圖片的簡單程式，用一點時間改成網頁版讓大家玩玩
     <form action="/uploader" method="POST" enctype="multipart/form-data">
         <p><label><input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required />
         <br>
         <p>排列方式：<br>
         <p><label><input type="radio" name="mode" value="hw" checked="checked" required>水平二排</label></p>
-        <p><label><input type="radio" name="mode" value="vw" required>垂直二排</label></p>
+        <p><label><input type="radio" name="mode" value="vw" required>垂直二排 <- 適合艦隊編成</label></p>
         <p><label><input type="radio" name="mode" value="hl" required>水平一排</label></p>
         <p><label><input type="radio" name="mode" value="lv" required>垂直一排</label></p>
         <p><label><input type="submit" />
@@ -23,6 +24,6 @@
     <p>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</p>
     <p>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載到自己的機器上面喔</p>
     <p><a href="">要請我ㄏ咖啡ㄇ><</a></p>
-    <p><a href="">聯絡我</a></p>
+    <p><a>聯絡我</a></p>
 </body>
 </html>
