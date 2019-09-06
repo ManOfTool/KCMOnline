@@ -24,7 +24,14 @@ def error_page():
 def upload_files():
     if request.method == 'POST':
         mode = request.form['mode']
+        rows = int(request.form['rows'])
         file_list = request.files.getlist('file')
+        
+        print('[.]rows: {}'.format(rows))
+        print('[.]Mode: _{}_'.format(mode))
+        if rows < len(file_list):
+            return "Too many rows, sorry!<br>{}".format(GO_BACK_LINK)
+
         dst = uuid4().hex + '.jpg'
         fs_n = []
         for f in file_list:
@@ -36,7 +43,7 @@ def upload_files():
             f.save(f.filename)
             fs_n.append(f.filename)
 
-        X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst)
+        X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst, rows)
         if X != 'Success':
             return "Error occured!<br>{}".format(GO_BACK_LINK)
 

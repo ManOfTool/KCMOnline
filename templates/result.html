@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+
     <title>Result</title>
 </head>
 <body>
@@ -12,33 +14,32 @@
         這是你要的圖片嗎？點擊圖片下載！
     </div>
     <a href="/">
-    <div class="col-12">
-        <h3>← Back</h3>
-    </div>
+        <div class="col-12 back-bar">
+            <h3>← Back</h3>
+        </div>
     </a>
-        <div class="row">
-            <div class="col-6 right">
-                <div class="aside">
-                    <h2>注意事項</h2>
-                    <ul>
-                    <li>本網站不負責保存使用者的資料，原始檔案請自己保管好</li>
-                    <li>請避免上傳非圖片的檔案，我也不知道會發生什麼事...</li>
-                    <li>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</li>
-                    <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-9" style="background-color: LightYellow;">
-                <a href="{{ url_for('static', filename='images/'+img)}}" download>
-                    <img src="{{ url_for('static', filename='images/'+img) }}" alt="result" />
-                </a>
-
+    <div class="row">
+        <div class="col-6 right">
+            <div class="aside">
+                <h2>注意事項</h2>
+                <ul>
+                <li>本網站不負責保存使用者的資料，原始檔案請自己保管好</li>
+                <li>請避免上傳非圖片的檔案，我也不知道會發生什麼事...</li>
+                <li>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</li>
+                <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
+                </ul>
             </div>
         </div>
-    <div class="col-12">
-        <h3><a href="/">← Back</a></h3>
+        <div class="col-9" style="background-color: LightYellow;">
+            <a href="{{ url_for('static', filename='images/'+img)}}" download>
+                <img src="{{ url_for('static', filename='images/'+img) }}" alt="result" />
+            </a>
+
+        </div>
+        <div class="col-12 back-bar">
+            <h3><a href="/">← Back</a></h3>
+        </div>
     </div>
-    
     <div class="footer">
         <ul>
         <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>

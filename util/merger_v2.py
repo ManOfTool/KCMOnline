@@ -16,7 +16,7 @@ Modify from KCMerge
 https://github.com/ManOfTool/KCMerge
 '''
 
-def Merging(mode, src_path, saved):
+def Merging(mode, src_path, saved, rows):
 
     images = appendFile(src_path)
     if '!!!!!' in images:
@@ -24,7 +24,9 @@ def Merging(mode, src_path, saved):
         return images
 
     n_imgs = len(images)
-    x, y = modeSelect(mode, n_imgs)
+    x, y = modeSelect(mode, n_imgs, rows)
+    if x == '!!!!!':
+        return x
 
     width, height = 0, 0
     x_offset, y_offset = 0, 0
@@ -79,7 +81,7 @@ def appendFile(src_path):
     return images
 
 # Determine a mode
-def modeSelect(mode, n_imgs):
+def modeSelect(mode, n_imgs, n):
     x, y = 0, 0
     mode = ''.join(sorted(mode))
 
@@ -103,9 +105,15 @@ def modeSelect(mode, n_imgs):
         y = ceil(n_imgs / 2)
         x = ceil(n_imgs / y)
 
+    elif mode == 'cs':
+        print('[.]Mode: custom')
+        x = ceil(n_imgs / n)
+        y = ceil(n_imgs / x)
+
     else:
         print('[!]Unknow mode')
-        exit()
+        print('[!]Your mode: _{}_'.format(mode))
+        return '!!!!!', '!!!!!'
 
     return x, y
 

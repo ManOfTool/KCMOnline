@@ -33,6 +33,10 @@
     background-color: White;
 }
 
+.back-bar {
+    background-color: Moccasin;
+}
+
 img {
     max-width: 100%;
     height: auto;
