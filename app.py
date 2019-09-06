@@ -43,4 +43,4 @@ def upload_files():
         return render_template('result.html', img=dst)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
