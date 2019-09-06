@@ -20,6 +20,7 @@ def Merging(mode, src_path, saved):
 
     images = appendFile(src_path)
     if '!!!!!' in images:
+        clearFolder(src_path)
         return images
 
     n_imgs = len(images)
@@ -61,7 +62,6 @@ def Merging(mode, src_path, saved):
     return 'Success'
 
 def appendFile(src_path):
-
     if os.path.isdir(src_path[0]):
         root_path = os.path.abspath(src_path[0])
         src_path = os.listdir(src_path[0])
@@ -78,6 +78,7 @@ def appendFile(src_path):
 
     return images
 
+# Determine a mode
 def modeSelect(mode, n_imgs):
     x, y = 0, 0
     mode = ''.join(sorted(mode))
@@ -107,6 +108,12 @@ def modeSelect(mode, n_imgs):
         exit()
 
     return x, y
+
+# Remove files in given list
+def clearFolder(src_path):
+    for f in src_path:
+        if os.path.exists(f):
+            os.remove(os.path.abspath(f))
 
 if __name__ == "__main__":
     args = sys.argv

@@ -9,8 +9,8 @@
     <p>
         <a href="{{ url_for('static', filename='images/'+img)}}" download>Click to donwload</a>
     </p>
-    <p>Preview</p>
-    <img src="{{ url_for('static', filename='images/'+img) }}" style="width: 40%; height: 40%;" />
+    Preview
     <br>
+    <img src="{{ url_for('static', filename='images/'+img) }}" style="width: 40%; height: 40%;" alt="result" />
 </body>
 </html>

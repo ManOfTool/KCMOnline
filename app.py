@@ -5,6 +5,8 @@ import merger_v2
 app = Flask(__name__)
 
 SAVE_PATH = 'static/images/'
+ALLOWED_MIME = ['image/jpeg', 'image/png']
+GO_BACK_LINK = '<a href="/">Go back</a>'
 
 @app.route('/')
 def index():
@@ -14,6 +16,10 @@ def index():
 def upload_file():
     return render_template('upload.html')
 
+@app.route('/error')
+def error_page():
+    return render_template('error.html')
+
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_files():
     if request.method == 'POST':
@@ -22,15 +28,17 @@ def upload_files():
         dst = uuid4().hex + '.jpg'
         fs_n = []
         for f in file_list:
-            if f.filename.split('.')[-1].lower() not in ['jpg', 'png', 'jpeg']:
-                return redirect(url_for('upload_file'))
+            print(f.content_type)
+            if f.content_type not in ALLOWED_MIME:
+                return "Please upload png & jpg only!<br>{}".format(GO_BACK_LINK)
 
-            f.save(SAVE_PATH + secure_filename(f.filename))
-            fs_n.append(SAVE_PATH + secure_filename(f.filename))
+            f.filename = SAVE_PATH + uuid4().hex + '.jpg'
+            f.save(f.filename)
+            fs_n.append(f.filename)
 
         X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst)
         if X != 'Success':
-            return redirect(url_for('upload_file'))
+            return "Error occured!<br>{}".format(GO_BACK_LINK)
 
         return render_template('result.html', img=dst)
 

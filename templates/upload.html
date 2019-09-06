@@ -2,34 +2,54 @@
 <html>
 <head>
     <title>Upload</title>
+    <style type="text/css">
+    .sample_pic {
+        width: 20%;
+        height: 20%;
+    }
+    </style>
 </head>
 <body>
-    <h1>KC Merge Online</h1>
-    之前為了寫艦娘攻略寫了一個組合圖片的簡單程式，用一點時間改成網頁版讓大家玩玩
-    <form action="/uploader" method="POST" enctype="multipart/form-data">
-        <p><label><input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required />
-        <br>
-        <p>排列方式：<br>
-        <p><label><input type="radio" name="mode" value="hw" checked="checked" required>水平二排</label></p>
-        <p>
-            <label><input type="radio" name="mode" value="vw" required>垂直二排 ← 適合艦隊編成</label>
-            <br>
-            <img src="https://i.imgur.com/oT5j4EN.jpg" style="width: 20%; height: 20%;">
-        </p>
-        <p><label><input type="radio" name="mode" value="hl" required>水平一排</label></p>
-        <p><label><input type="radio" name="mode" value="lv" required>垂直一排</label></p>
-        <p><label><input type="submit" />
-    </form>
-
+    <div id="header">
+        <h1>KC Merge Online</h1>
+        之前為了寫艦娘攻略寫了一個組合圖片的簡單程式，用一點時間改成網頁版讓大家玩玩
+    </div>
+    <div>
+        <form action="/uploader" method="POST" enctype="multipart/form-data">
+            
+            <p><label><input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required /></label><input type="submit" /></p>
+            <p>排列方式：<br>
+                <label><input type="radio" name="mode" value="hw" required>水平二排</label><br>
+                <img src="https://i.imgur.com/x3TIoqk.jpg" class="sample_pic" alt="sample1">
+            </p>
+            <p>
+                <label><input type="radio" name="mode" value="vw" checked="checked" required>垂直二排 ← 適合艦隊編成</label><br>
+                <img src="https://i.imgur.com/oT5j4EN.jpg" class="sample_pic" alt="sample2">
+            </p>
+            <p>
+                <label><input type="radio" name="mode" value="hl" required>水平一排</label><br>
+                <img src="https://i.imgur.com/hiTzeq8.jpg" class="sample_pic" alt="sample3">
+            </p>
+            <p>
+                <label><input type="radio" name="mode" value="lv" required>垂直一排</label><br>
+                <img src="https://i.imgur.com/miOPAyV.jpg" class="sample_pic" style="height: 10%; width: 10%;" alt="sample4">
+            </p>
+        </form>
+    </div>
     <h2>注意事項</h2>
     <ul>
-        <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>
         <li>本網站不負責保存使用者的資料，原始檔案請自己保管好</li>
         <li>請避免上傳非圖片的檔案，畢竟我也不知道會發生什麼事...</li>
         <li>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</li>
-        <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載到自己的機器上面喔</li>
-        <li><a href="javascript:alert('☕')">要請我ㄏ咖啡ㄇ><</a></li>
-        <li><a>聯絡我</a></li>
+        <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
     </ul>
+
+    <div id="footer">
+        <ul>
+            <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>
+            <li><a href="javascript:alert('☕')">要請我ㄏ咖啡ㄇ><</a></li>
+            <li><a>聯絡我</a></li>
+        </ul>
+    </div>
 </body>
 </html>
