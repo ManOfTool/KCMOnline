@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
 from uuid import uuid4
-import merger_v2
+import util.merger_v2
 app = Flask(__name__)
 
 SAVE_PATH = 'static/images/'
