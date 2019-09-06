@@ -3,75 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <title>Upload</title>
-    <style type="text/css">
-    * {
-        box-sizing: border-box;
-        
-    }
-
-    div {
-        border-style: solid;
-        border-width: 1px;
-    }
-
-    .row::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-    [class*="col-"]{
-        float: left;
-        padding: 15px;
-    }
-    
-    .header {
-        background-color: LightBlue;
-        padding: 15px;
-    }
-
-    .footer {
-        background-color: LightGreen;
-        padding: 10px;
-    }
-
-    .right {
-        background-color: LightYellow;
-    }
-
-    .aside {
-        background-color: Red;
-        padding: 15px;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* For mobile phones */
-    [class*="col-"] {
-        width: 100%;
-    }
-
-    @media only screen and (min-width: 768px){
-        /* For Desktop: */
-        .col-1 {width: 5%;}
-        .col-2 {width: 15%;}
-        .col-3 {width: 20%;}
-        .col-4 {width: 30%;}
-        .col-5 {width: 35%;}
-        .col-6 {width: 40%;}
-        .col-7 {width: 50%;}
-        .col-8 {width: 56%; background-color: Blue;}
-        .col-9 {}
-        .col-10 {}
-        .col-11 {}
-        .col-12 {width: 100%;}
-    }
-
-    </style>
 </head>
 <body>
     <div class="header">
@@ -84,32 +17,32 @@
             <div class="aside">
                 <h2>注意事項</h2>
                 <ul>
-                    <li>本網站不負責保存使用者的資料，原始檔案請自己保管好</li>
-                    <li>請避免上傳非圖片的檔案，我也不知道會發生什麼事...</li>
-                    <li>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</li>
-                    <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
+                <li>本網站不負責保存使用者的資料，原始檔案請自己保管好</li>
+                <li>請避免上傳非圖片的檔案，我也不知道會發生什麼事...</li>
+                <li>請不要上傳包含機敏資料的檔案，若發生資訊外洩本網站概不負責</li>
+                <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
                 </ul>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-9" style="background-color: LightYellow;">
             <form action="/uploader" method="POST" enctype="multipart/form-data">
                 
                 <label><input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required /></label><br><input type="submit" /><br>
                 <div class="col-7">
-                    <label><input type="radio" name="mode" value="hw" required>1水平二排</label><br>
-                    <img src="https://i.imgur.com/x3TIoqk.jpg" class="sample_pic" alt="sample1">
-                </div>
-                <div class="col-7">
-                    <label><input type="radio" name="mode" value="vw" checked="checked" required>2垂直二排</label><br>
-                    <img src="https://i.imgur.com/oT5j4EN.jpg" class="sample_pic" alt="sample2">
-                </div>
-                <div class="col-7">
-                    <label><input type="radio" name="mode" value="hl" required>3水平一排</label><br>
+                    <label><input type="radio" name="mode" value="hl" required>水平一排</label><br>
                     <img src="https://i.imgur.com/hiTzeq8.jpg" class="sample_pic" alt="sample3">
                 </div>
                 <div class="col-7">
-                    <label><input type="radio" name="mode" value="lv" required>4垂直一排</label><br>
-                    <img src="https://i.imgur.com/miOPAyV.jpg" class="sample_pic" style="height: 10%; width: 10%;" alt="sample4">
+                    <label><input type="radio" name="mode" value="hw" required>水平二排</label><br>
+                    <img src="https://i.imgur.com/x3TIoqk.jpg" class="sample_pic" alt="sample1">
+                </div>
+                <div class="col-7">
+                    <label><input type="radio" name="mode" value="vw" checked="checked" required>垂直二排 ← KC recommand!</label><br>
+                    <img src="https://i.imgur.com/oT5j4EN.jpg" class="sample_pic" alt="sample2">
+                </div>
+                <div class="col-7">
+                    <label><input type="radio" name="mode" value="lv" required>垂直一排</label><br>
+                    <img src="https://i.imgur.com/miOPAyV.jpg" class="sample_pic" alt="sample4">
                 </div>
             </form>
         </div>
@@ -118,9 +51,9 @@
 
     <div class="footer">
         <ul>
-            <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>
-            <li><a href="javascript:alert('☕')">要請我ㄏ咖啡ㄇ><</a></li>
-            <li><a>聯絡我</a></li>
+        <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>
+        <li><a href="javascript:alert('☕')">要請我ㄏ咖啡ㄇ><</a></li>
+        <li><a>聯絡我</a></li>
         </ul>
     </div>
 </body>

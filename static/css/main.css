@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"]{
+    float: left;
+    padding: 15px;
+}
+
+.header {
+    background-color: LightBlue;
+    padding: 15px;
+}
+
+.footer {
+    background-color: LightGreen;
+    padding: 10px;
+}
+
+.right {
+    background-color: Pink;
+}
+
+.aside {
+    padding: 15px;
+    background-color: White;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* For mobile phones */
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px){
+    /* For Desktop: */
+    .col-1 {width: 5%;}
+    .col-2 {width: 15%;}
+    .col-3 {width: 20%;}
+    .col-4 {width: 30%;}
+    .col-5 {width: 35%;}
+    .col-6 {width: 40%;}
+    .col-7 {width: 50%;}
+    .col-8 {width: 56%;}
+    .col-9 {width: 60%;}
+    .col-10 {}
+    .col-11 {}
+    .col-12 {width: 100%;}
+}
