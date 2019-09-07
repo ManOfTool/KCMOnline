@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
     <title>Upload</title>
 </head>
 <body>
-    <div class="header">
-        <h1>KC Merge Online</h1>
-        之前為了寫艦娘攻略寫了一個組合圖片的簡單程式，用一點時間改成網頁版讓大家玩玩
+    <div class="header row">
+        <label><a href="/"></a><h1>KC Merge Online</h1></label>
+        之前為了寫艦娘攻略寫了一個組合圖片的簡單程式，用一點時間改成網頁版讓大家玩玩，這樣就不用安裝Python囉～
     </div>
 
     <div class="row">
@@ -24,6 +23,11 @@
                 <li>每次重新部署或是經過24小時，所有檔案都會被清除，要記得把組合後的圖片下載下來喔</li>
                 </ul>
             </div>
+<!--             <div><br></div>
+            <div class="aside">
+                <h2>Preview</h2>
+                <img src="" />
+            </div> -->
         </div>
         <div class="col-9" style="background-color: LightYellow;">
             <form action="/uploader" method="POST" enctype="multipart/form-data">
@@ -43,7 +47,7 @@
                     <img src="https://i.imgur.com/x3TIoqk.jpg" class="sample_pic" alt="sample1">
                 </div>
                 <div class="col-7">
-                    <label><input type="radio" name="mode" value="vw" checked="checked" required>垂直二排 ← KC recommand!</label><br>
+                    <label><input type="radio" name="mode" value="vw" checked="checked" required>垂直二排</label><br>
                     <img src="https://i.imgur.com/oT5j4EN.jpg" class="sample_pic" alt="sample2">
                 </div>
                 <div class="col-7">
@@ -59,7 +63,7 @@
         <ul>
         <li>本網站原始碼公開在<a href="https://github.com/ManOfTool/KCMOnline">Github</a>上，歡迎各位前往指教</li>
         <li><a href="javascript:alert('☕')">要請我ㄏ咖啡ㄇ><</a></li>
-        <li><a>聯絡我</a></li>
+        <li><a href="">聯絡我</a></li>
         </ul>
     </div>
 </body>

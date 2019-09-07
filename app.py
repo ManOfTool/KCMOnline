@@ -29,8 +29,10 @@ def upload_files():
         
         print('[.]rows: {}'.format(rows))
         print('[.]Mode: _{}_'.format(mode))
-        if rows < len(file_list):
-            return "Too many rows, sorry!<br>{}".format(GO_BACK_LINK)
+
+        if mode == 'cs':
+            if rows > len(file_list):
+                return "Too many rows, sorry!<br>{}".format(GO_BACK_LINK)
 
         dst = uuid4().hex + '.jpg'
         fs_n = []
@@ -50,4 +52,4 @@ def upload_files():
         return render_template('result.html', img=dst)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
