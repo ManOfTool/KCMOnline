@@ -27,19 +27,17 @@ def upload_files():
         rows = int(request.form['rows'])
         file_list = request.files.getlist('file')
         
-        print('[.]rows: {}'.format(rows))
-        print('[.]Mode: _{}_'.format(mode))
-
         if mode == 'cs':
-            if rows > len(file_list):
-                return "Too many rows, sorry!<br>{}".format(GO_BACK_LINK)
+            if rows <= 0:
+                return "<h3>Rows should bigger than 0!</h3><br>{}".format(GO_BACK_LINK)
+            elif rows > len(file_list):
+                return "<h3>Too many rows, sorry!</h3><br>{}".format(GO_BACK_LINK)
 
         dst = uuid4().hex + '.jpg'
         fs_n = []
         for f in file_list:
-            print(f.content_type)
             if f.content_type not in ALLOWED_MIME:
-                return "Please upload png & jpg only!<br>{}".format(GO_BACK_LINK)
+                return "<h3>Please upload png & jpg only!</h3><br>{}".format(GO_BACK_LINK)
 
             f.filename = SAVE_PATH + uuid4().hex + '.jpg'
             f.save(f.filename)
@@ -47,7 +45,7 @@ def upload_files():
 
         X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst, rows)
         if X != 'Success':
-            return "Error occured!<br>{}".format(GO_BACK_LINK)
+            return "<h3>Error occured!</h3><br>{}".format(GO_BACK_LINK)
 
         return render_template('result.html', img=dst)
 
