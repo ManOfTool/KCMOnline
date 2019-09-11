@@ -18,20 +18,24 @@ https://github.com/ManOfTool/KCMerge
 
 def Merging(mode, src_path, saved, rows):
 
-    images = appendFile(src_path)
-    if '!!!!!' in images:
-        clearFolder(src_path)
-        return images
+    src_path = appendFile(src_path)
 
-    n_imgs = len(images)
+    n_imgs = len(src_path)
     x, y = modeSelect(mode, n_imgs, rows)
-    if x == '!!!!!':
+    if x == -1:
         return x
 
     width, height = 0, 0
     x_offset, y_offset = 0, 0
 
     print('[.]x: {}, y: {}'.format(x, y))
+
+    try:
+        images = [Image.open(f) for f in src_path]
+    except Exception as e:
+        print(e)
+        clearFolder(src_path)
+        return -1
 
     # Create image template
     for i in images:
@@ -47,21 +51,16 @@ def Merging(mode, src_path, saved, rows):
     for i in range(y):
         for j in range(x):
             template_img.paste(images[cnt], (x_offset + width * j, y_offset + height * i))
-            print('[.]Image{} pasted'.format(cnt))
-
             cnt += 1
-            if cnt >= n_imgs:
-                break
 
     template_img.save(saved, 'JPEG', quality=80, optimize=True, Progressive=True)
 
     print('[+]Image saved to {}'.format(os.path.abspath(saved)))
 
     # Remove files after done
-    for i in src_path:
-        os.remove(os.path.abspath(i))
+    clearFolder(src_path)
 
-    return 'Success'
+    return 0
 
 def appendFile(src_path):
     if os.path.isdir(src_path[0]):
@@ -69,16 +68,7 @@ def appendFile(src_path):
         src_path = os.listdir(src_path[0])
         src_path = [os.path.join(root_path, src) for src in src_path]
 
-    print('[.]Images to merge:\n[.]    {}'.format('\n[.]    '.join(src_path)))
-    images = []
-    for img in src_path:
-        try:
-            images.append(Image.open(img))
-        except Exception as e:
-            print(e)
-            return '!!!!!' + str(e)
-
-    return images
+    return src_path
 
 # Determine a mode
 def modeSelect(mode, n_imgs, n):
@@ -112,8 +102,8 @@ def modeSelect(mode, n_imgs, n):
 
     else:
         print('[!]Unknow mode')
-        print('[!]Your mode: _{}_'.format(mode))
-        return '!!!!!', '!!!!!'
+        print('[!]Your mode: {}'.format(mode))
+        x, y = -1, -1
 
     return x, y
 

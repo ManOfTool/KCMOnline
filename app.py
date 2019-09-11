@@ -44,7 +44,7 @@ def upload_files():
             fs_n.append(f.filename)
 
         X = merger_v2.Merging(mode, fs_n, SAVE_PATH+dst, rows)
-        if X != 'Success':
+        if X != 0:
             return "<h3>Error occured!</h3><br>{}".format(GO_BACK_LINK)
 
         return render_template('result.html', img=dst)
