@@ -8,6 +8,10 @@ SAVE_PATH = 'static/images/'
 ALLOWED_MIME = ['image/jpeg', 'image/png']
 GO_BACK_LINK = '<a href="/">Go back</a>'
 
+@app.route('/api1', methods=['GET'])
+def api1():
+    return 'Hello world'
+
 @app.route('/')
 def index():
     return render_template('upload.html')
