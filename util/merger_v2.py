@@ -53,6 +53,9 @@ def Merging(mode, src_path, saved, rows):
             template_img.paste(images[cnt], (x_offset + width * j, y_offset + height * i))
             cnt += 1
 
+            if cnt >= n_imgs:
+                break
+
     template_img.save(saved, 'JPEG', quality=80, optimize=True, Progressive=True)
 
     print('[+]Image saved to {}'.format(os.path.abspath(saved)))
