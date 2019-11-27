@@ -1,7 +1,6 @@
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
-from uuid import uuid4
-from util import merger_v2
+from util import m
 
 app = Flask(__name__)
 
@@ -27,4 +26,4 @@ def submitFile():
     return {'status': status, 'result_msg': result_msg, 'result': result}
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
