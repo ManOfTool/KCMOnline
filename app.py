@@ -4,8 +4,6 @@ from util import m
 
 app = Flask(__name__)
 
-SAVE_PATH = 'static/images/'
-
 @app.route('/')
 def index():
     return 'hello world'

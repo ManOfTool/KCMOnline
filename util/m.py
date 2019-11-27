@@ -3,10 +3,9 @@ from PIL import Image
 from io import BytesIO
 from math import ceil
 from uuid import uuid4
-import sys
-import re
+import re, os
 
-FILE_PATH = './static/images/'
+FILE_PATH = '../static/images/'
 MIME_CHECK = re.compile('data:image/(jpeg|png);base64')
 
 def mergeImages(dataList, mode=0, row=2):
@@ -59,6 +58,8 @@ def mergeImages(dataList, mode=0, row=2):
     with open(file_name, 'rb') as f:
         f = f.read()
     result = str(b64encode(f), 'utf-8')
+
+    os.remove(file_name)
 
     return 'Done', 'data:image/jpeg;base64,' + result
 
