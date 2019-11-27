@@ -1,16 +1,16 @@
 from flask import Flask, redirect, url_for, request, render_template
-from flask_cors import cross_origin
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from util import m
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
     return 'hello world'
 
 @app.route('/postdata', methods=['POST'])
-@cross_origin()
 def submitFile():
     data = request.json
 

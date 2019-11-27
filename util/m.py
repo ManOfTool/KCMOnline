@@ -5,7 +5,7 @@ from math import ceil
 from uuid import uuid4
 import re, os
 
-FILE_PATH = '../static/images/'
+FILE_PATH = ''
 MIME_CHECK = re.compile('data:image/(jpeg|png);base64')
 
 def mergeImages(dataList, mode=0, row=2):
